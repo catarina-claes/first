@@ -1,37 +1,29 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Tabs } from "expo-router";
+import { Ionicons  } from "@expo/vector-icons";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
-  );
+export default function TabsLayout(){
+    return(
+        <Tabs
+        screenOptions={{
+            tabBarActiveTintColor:"gold",
+            headerStyle:{
+                backgroundColor: "#25292e"
+            },
+            headerTintColor:"gold",
+            tabBarStyle:{
+                backgroundColor:"#25292e"
+            }
+        }}>
+            <Tabs.Screen name="about" options={{title:"Ini About!",
+                tabBarIcon:({color, focused}) => (
+                    <Ionicons name={focused? "home-sharp": "home-outline"} color={color} size={24}/>
+                )
+            }}/>
+            <Tabs.Screen name="index" options={{title:"Ini Index!",
+                tabBarIcon: ({color, focused}) => (
+                    <Ionicons name={focused? "information-circle": "information-circle-outline"} color={color} size={24}/>
+                )
+            }}/>
+        </Tabs>
+    )
 }
